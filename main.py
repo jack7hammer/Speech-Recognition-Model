@@ -65,10 +65,6 @@ Allwaves=np.array(Allwaves).reshape(-1,8000,1)
 #saveList(y_train,"y_train.npy")
 
 
-
-
-"""
-
 #MODEL 
 
 K.clear_session()
@@ -111,20 +107,3 @@ history=model.fit(x_train, y_train ,epochs=100, callbacks=[es,mc], batch_size=32
 
 
 
-model=load_model('bestt_model.hdf5')
-from keras.models import load_model
-import random
-
-best_model=load_model('best_model.hdf5')
-
-def predict(audio):
-	prediction=model.predict(audio.reshape(1,8000,1))
-	index=np.argmax(prediction[0])
-	return classes[index]
-index=random.randint(0,len(x_value)-1)
-samples=x_value[index].ravel()	
-print("Audio:",classes[np.argmax(y_value[index])])
-ipd.Audio(samples, rate=8000)
-
-print("Text:",predict(samples))
-"""
